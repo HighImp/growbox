@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "pins_arduino.h": "c",
+        "interrupt.h": "c",
+        "stdint.h": "c"
+    }
+}
