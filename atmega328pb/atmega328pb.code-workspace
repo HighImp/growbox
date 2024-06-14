@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "atmega328pb",
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"random": "cpp"
+		}
+	}
+}
