@@ -57,7 +57,7 @@ def main(source, target, env):
     
     firmware_hex = Path(target[0].get_abspath())
     assert firmware_hex.is_file()
-    
+    print("AAAA")
     remote_ip = "192.168.178.16"  # Replace with the actual IP address of the remote computer
     remote_user = "pi"
     remote_path = "/home/pi"     # Target directory on the remote computer
