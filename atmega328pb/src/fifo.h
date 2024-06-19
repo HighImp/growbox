@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#define FIFO_BUFFER_SIZE 20
+#define FIFO_BUFFER_SIZE 50
 
 typedef struct {
     uint8_t buffer[FIFO_BUFFER_SIZE];

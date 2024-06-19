@@ -1,15 +1,19 @@
 
 #include <Arduino.h>
-#include "data_collector.hpp"
 #include "hardware.hpp"
 #include <SPI.h>
+#include "sensordata.hpp"
 extern "C" {
   #include "spi_slave.h"
+  #include "fifo.h"
 }
 
 
 uint8_t count;
 uint8_t sleep_time = 10;
+JsonDocument doc;
+char char_buffer[FIFO_BUFFER_SIZE];
+SensorData sensorData;
 
 void setup() {
   // put your setup code here, to run once:
@@ -19,21 +23,12 @@ void setup() {
   pinMode(MISO, OUTPUT);
 }
 
+
 void loop() {
-  
-  //digitalWrite(MISO, (digitalRead(MOSI)));
-  
-  char* text = "Finaly Done";
-  
-  write_spi(strlen(text), (uint8_t*)text);
-
-  while (!write_spi(1, &count)){
-      digitalWrite(LEDB, LOW);
-  }
-
-  digitalWrite(LEDB, LOW);
-  delay(10);
-  digitalWrite(LEDB, HIGH);
-  delay(1000); 
-  count++;
+    sprintf(char_buffer, "%d", analogRead(A0));
+    write_spi(strlen(char_buffer)+1, (uint8_t*)char_buffer);
+    digitalWrite(LEDB, HIGH); 
+    delay(300);
+    digitalWrite(LEDB, LOW);
+    delay(300);
 }
